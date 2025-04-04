@@ -17,7 +17,6 @@ fun ContactListScreen(
     viewModel: ContactViewModel = viewModel()
 ) {
     val contacts = viewModel.filteredContacts.collectAsState().value
-    val searchQuery = viewModel.searchQuery.collectAsState().value
 
     Scaffold(
         topBar = { 

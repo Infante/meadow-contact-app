@@ -10,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.roberto.meadow.data.Contact
 
@@ -95,4 +96,23 @@ private fun EmptyContactList(
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ContactListEmptyPreview() {
+    ContactList(contacts = emptyList(), onContactClick = {})
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ContactListPopulatedPreview() {
+    val sampleContacts = listOf(
+        Contact(id = "1", firstName = "Alice", lastName = "Anderson", phone = "123", isFavorite = true),
+        Contact(id = "2", firstName = "Bob", lastName = "Brown", phone = "456", isFavorite = false),
+        Contact(id = "3", firstName = "Charlie", lastName = "Clark", phone = "789", isFavorite = false),
+        Contact(id = "4", firstName = "Amanda", lastName = "Avery", phone = "101", isFavorite = true),
+    )
+
+    ContactList(contacts = sampleContacts, onContactClick = {})
 }
