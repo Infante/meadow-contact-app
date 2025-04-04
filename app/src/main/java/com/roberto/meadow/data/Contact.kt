@@ -12,5 +12,5 @@ data class Contact(
     val phone: String,
     val notes: String? = null,
     val isFavorite: Boolean = false,
-    val isBlocked: Boolean = false
+    val isBlocked: Boolean = false,
 )

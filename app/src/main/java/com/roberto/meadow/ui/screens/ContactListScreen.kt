@@ -1,26 +1,37 @@
 package com.roberto.meadow.ui.screens
 
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.Column
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Modifier
+import com.roberto.meadow.ui.components.ContactList
+import com.roberto.meadow.ui.components.ContactListHeader
+import com.roberto.meadow.viewmodel.ContactViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun ContactListScreen(
-    onContactClick: (String) -> Unit
+    onContactClick: (String) -> Unit,
+    viewModel: ContactViewModel = viewModel()
 ) {
-    Scaffold() { padding ->
-        Column(modifier = Modifier.padding(padding)) {
-            Text("Hello from the screen!")
-        }
+    val contacts = viewModel.contacts.collectAsState().value
 
-        Button(onClick = {
-            onContactClick("1234")
-        }) {
-            Text("Navigate to Contact Detail Test")
+    Scaffold(
+        topBar = { 
+            ContactListHeader(
+                onCreateContact = { contact ->
+                    viewModel.createContact(contact)
+                }
+            )
+        },
+    ) { padding ->
+        Column(modifier = Modifier.padding(padding)) {
+            ContactList(
+                contacts = contacts,
+                onContactClick = onContactClick
+            )
         }
     }
 }
