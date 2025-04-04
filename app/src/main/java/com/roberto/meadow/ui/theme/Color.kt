@@ -2,10 +2,18 @@ package com.roberto.meadow.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val White = Color(0xFFFFFFFF)
+val Black = Color(0xFF000000)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val Neutral600 = Color(0xFF908C84)
+val Neutral200 = Color(0xFFE4E3E2)
+val Neutral100 = Color(0xFFF3F2F2)
+
+val Success600 = Color(0xFF15982C)
+val Success800 = Color(0xFF09662A)
+
+val Yellow = Color(0xFFFFC857)
+val Warning600 = Color(0xFFD0B400)
+
+val Danger600 = Color(0xFFCF1F02)
+val Danger800 = Color(0xFF8B0101)
