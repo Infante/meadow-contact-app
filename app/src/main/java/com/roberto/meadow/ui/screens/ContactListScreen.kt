@@ -16,13 +16,17 @@ fun ContactListScreen(
     onContactClick: (String) -> Unit,
     viewModel: ContactViewModel = viewModel()
 ) {
-    val contacts = viewModel.contacts.collectAsState().value
+    val contacts = viewModel.filteredContacts.collectAsState().value
+    val searchQuery = viewModel.searchQuery.collectAsState().value
 
     Scaffold(
         topBar = { 
             ContactListHeader(
                 onCreateContact = { contact ->
                     viewModel.createContact(contact)
+                },
+                onSearchQueryChange = { query ->
+                    viewModel.updateSearchQuery(query)
                 }
             )
         },
