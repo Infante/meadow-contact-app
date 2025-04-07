@@ -8,7 +8,7 @@ import java.util.*
 data class Contact(
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
     val firstName: String,
-    val lastName: String,
+    val lastName: String? = null,
     val phone: String,
     val notes: String? = null,
     val isFavorite: Boolean = false,

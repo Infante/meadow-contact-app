@@ -1,6 +1,5 @@
 package com.roberto.meadow.ui.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -11,7 +10,6 @@ import com.roberto.meadow.ui.components.ContactList
 import com.roberto.meadow.ui.components.ContactListHeader
 import com.roberto.meadow.viewmodel.ContactViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.roberto.meadow.ui.theme.*
 
 @Composable
 fun ContactListScreen(

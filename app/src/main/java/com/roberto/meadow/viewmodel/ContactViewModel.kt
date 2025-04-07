@@ -33,7 +33,7 @@ class ContactViewModel(
         } else {
             contacts.filter {
                 it.firstName.contains(query, ignoreCase = true) ||
-                        it.lastName.contains(query, ignoreCase = true) ||
+                        it.lastName.orEmpty().contains(query, ignoreCase = true) ||
                         it.phone.contains(query)
             }
         }

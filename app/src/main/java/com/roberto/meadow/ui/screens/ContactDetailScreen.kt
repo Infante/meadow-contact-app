@@ -44,7 +44,7 @@ private fun ContactDetailForm(
     onDeleteContact: (Contact) -> Unit
 ) {
     var firstName by remember { mutableStateOf(contact.firstName) }
-    var lastName by remember { mutableStateOf(contact.lastName) }
+    var lastName by remember { mutableStateOf(contact.lastName ?: "") }
     var phone by remember { mutableStateOf(contact.phone) }
     var notes by remember { mutableStateOf(contact.notes ?: "") }
     var isFavourite by remember { mutableStateOf(contact.isFavorite) }
@@ -100,7 +100,7 @@ private fun ContactDetailForm(
                     )
                     onEditContact(updated)
                 },
-                isSaveEnabled = firstName.isNotBlank() && lastName.isNotBlank() && phone.isNotBlank()
+                isSaveEnabled = firstName.isNotBlank() && phone.isNotBlank()
             )
 
             FavoriteCheckbox(
