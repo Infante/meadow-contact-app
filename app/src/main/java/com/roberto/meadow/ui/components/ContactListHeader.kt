@@ -1,19 +1,15 @@
 package com.roberto.meadow.ui.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.roberto.meadow.data.Contact
-import com.roberto.meadow.ui.theme.*
-import androidx.compose.foundation.clickable
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,7 +57,7 @@ fun ContactListHeader(
         BottomSheetContainer(
             onDismiss = { showCreateSheet = false }
         ) {
-            CreateContactForm(
+            ContactForm(
                 onSubmit = onCreateContact,
                 onDismiss = { showCreateSheet = false }
 

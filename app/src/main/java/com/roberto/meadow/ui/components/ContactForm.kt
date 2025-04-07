@@ -19,31 +19,39 @@ import com.roberto.meadow.ui.theme.Neutral600
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreateContactForm( onSubmit: (Contact) -> Unit = {}, onDismiss: () -> Unit = {}) {
-    var firstName by remember { mutableStateOf("") }
-    var lastName by remember { mutableStateOf("") }
-    var phone by remember { mutableStateOf("") }
-    var notes by remember { mutableStateOf("") }
+fun ContactForm(
+    initialContact: Contact? = null,
+    onSubmit: (Contact) -> Unit = {},
+    onDismiss: () -> Unit = {}
+) {
+    var firstName by remember { mutableStateOf(initialContact?.firstName ?: "") }
+    var lastName by remember { mutableStateOf(initialContact?.lastName ?: "") }
+    var phone by remember { mutableStateOf(initialContact?.phone ?: "") }
+    var notes by remember { mutableStateOf(initialContact?.notes ?: "") }
 
     val isValid = firstName.isNotBlank() && phone.isNotBlank()
 
 
     fun handleSubmit() {
-        val newContact = Contact(
+        val newContact = initialContact?.copy(
             firstName = firstName,
-            lastName = lastName,
+            lastName = lastName.ifBlank { null },
             phone = phone,
-            notes = notes
+            notes = notes.ifBlank { null }
+        ) ?: Contact(
+            firstName = firstName,
+            lastName = lastName.ifBlank { null },
+            phone = phone,
+            notes = notes.ifBlank { null }
         )
+
         onSubmit(newContact)
 
-        // Reset all fields
         firstName = ""
         lastName = ""
         phone = ""
         notes = ""
 
-        // Dismiss the sheet
         onDismiss()
     }
 
@@ -61,7 +69,10 @@ fun CreateContactForm( onSubmit: (Contact) -> Unit = {}, onDismiss: () -> Unit =
             )
         },
         titleContent = {
-            Text("Create Contact", style = MaterialTheme.typography.titleLarge)
+            Text(
+                text = if (initialContact != null) "Edit Contact" else "Create Contact",
+                style = MaterialTheme.typography.titleLarge
+            )
         },
         endContent = {
            HeaderButton (
@@ -69,7 +80,7 @@ fun CreateContactForm( onSubmit: (Contact) -> Unit = {}, onDismiss: () -> Unit =
                icon = {
                    Icon(
                        imageVector = Icons.Filled.Check,
-                       contentDescription = "Create Contact",
+                       contentDescription = if (initialContact != null) "Save Contact" else "Create Contact",
                        modifier = Modifier.size(19.dp),
                        MaterialTheme.colorScheme.onPrimary
                    )
@@ -177,10 +188,11 @@ private fun ContactFormFields(
 
 @Preview(showBackground = true)
 @Composable
-fun CreateContactFormPreview() {
-    CreateContactForm(
+fun ContactFormPreview() {
+    ContactForm(
         onSubmit = {},
-        onDismiss = {}
+        onDismiss = {},
+        initialContact = null
     )
 }
 
