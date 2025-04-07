@@ -75,13 +75,13 @@ fun HeaderBar(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(Modifier.weight(1f), contentAlignment = Alignment.CenterStart) {
+        Box(contentAlignment = Alignment.CenterStart) {
             startContent()
         }
         Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
             titleContent()
         }
-        Box(Modifier.weight(1f), contentAlignment = Alignment.CenterEnd) {
+        Box(contentAlignment = Alignment.CenterEnd) {
             endContent()
         }
     }

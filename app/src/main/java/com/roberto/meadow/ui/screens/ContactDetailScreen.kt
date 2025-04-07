@@ -9,10 +9,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.roberto.meadow.data.Contact
 import com.roberto.meadow.ui.components.*
 import com.roberto.meadow.viewmodel.ContactViewModel
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
+
 
 @Composable
 fun ContactDetailScreen(
@@ -47,7 +48,10 @@ fun ContactDetailScreen(
                     )
                 },
                 titleContent = {
-                    Text(text = "${contact.firstName} ${contact.lastName.orEmpty()}".trim(), style = MaterialTheme.typography.titleLarge)
+                    Text(text = "${contact.firstName} ${contact.lastName.orEmpty()}".trim(), style = MaterialTheme.typography.titleLarge,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
 
                 },
                 endContent = {

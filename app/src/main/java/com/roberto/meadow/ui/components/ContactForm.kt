@@ -71,7 +71,8 @@ fun ContactForm(
         titleContent = {
             Text(
                 text = if (initialContact != null) "Edit Contact" else "Create Contact",
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleLarge,
+                maxLines = 1
             )
         },
         endContent = {
